@@ -1,7 +1,8 @@
-package org.simpleframework.core.inject.annotation;
+package org.simpleframework.core.inject;
 
 import lombok.extern.slf4j.Slf4j;
 import org.simpleframework.core.BeanContainer;
+import org.simpleframework.core.inject.annotation.Autowired;
 import org.simpleframework.util.ClassUtil;
 import org.simpleframework.util.ValidationUtil;
 

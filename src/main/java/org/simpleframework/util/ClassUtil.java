@@ -70,6 +70,7 @@ public class ClassUtil {
             //中获取到那么长，前面的都不需要啊，
             //D:.devCode.simpleframework.target.classes.com.imooc.entity.bo.HeadLine.class，
             //以包名indexof,然后截取到.class，lastIndexOf(".")就可以截取class文件之前的了。
+            //com.imooc.entity.bo.HeadLine
             extractClassFile(classSet, packageDirectory, packageName);
         }
         return classSet;
@@ -93,6 +94,7 @@ public class ClassUtil {
                     return true;
                 } else {
                     //获取文件的绝对值路径
+                    //D:\devCode\simpleframework\target\classes\com\imooc\entity\bo\HeadLine.class
                     String absolutePath = file.getAbsolutePath();
                     if (absolutePath.endsWith(SUFFIX_CLASS)) {
                         //如果是class文件，则直接加载
