@@ -55,7 +55,8 @@ public class ClassUtil {
             //   D:/devCode/simpleframework/target/classes/com/imooc/entity
             //   D:\devCode\simpleframework\target\classes\com\imooc\entity
             //这个getPath获取的是绝对路径
-            String path = url.getPath().substring(1).replaceAll("/", "\\\\");
+//            String path = url.getPath().substring(1).replaceAll("/", "\\\\");
+            String path = url.getPath().substring(1).replace("/", File.separator);
             //这里不能使用File.separator,因为这里只是一个斜线，在这里，还是需要转义的，需要两个斜线
             //String path1 = url.getPath().substring(1).replaceAll("/", File.separator);
             /*
@@ -119,6 +120,7 @@ public class ClassUtil {
                 //2.通过反射机制获取对应的Class对象并加入到classSet里,是通过Class.forName()
                 Class<?> targetClass = loadClass(className);
                 emptyClassSet.add(targetClass);
+                System.out.println(targetClass.toString());
 
             }
 
