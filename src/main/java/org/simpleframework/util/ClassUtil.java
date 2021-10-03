@@ -57,7 +57,7 @@ public class ClassUtil {
             //这个getPath获取的是绝对路径
 //            String path = url.getPath().substring(1).replaceAll("/", "\\\\");
             String path = url.getPath().substring(1).replace("/", File.separator);
-            //这里不能使用File.separator,因为这里只是一个斜线，在这里，还是需要转义的，需要两个斜线
+            //这里刚开始不能使用File.separator,是因为下面使用的是replaceAll，应该是用replace
             //String path1 = url.getPath().substring(1).replaceAll("/", File.separator);
             /*
             去掉协议，默认是/，就是linux下的根路径，先用substring截取，从1开始，第一个不要了，
@@ -88,6 +88,9 @@ public class ClassUtil {
         if (!fileSource.isDirectory()) {
             return;
         }
+        //如果是一个文件夹，则调用其list方法获取文件夹下的文件或文件夹。
+        //这边我们关注的是字节码和目录，其他的都return false,如果返回的是true的话，
+        //就代表提取到这个数组里面去了。
         File[] files = fileSource.listFiles(new FileFilter() {
             @Override
             public boolean accept(File file) {

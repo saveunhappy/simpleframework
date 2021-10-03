@@ -3,8 +3,8 @@ package demo.generic;
 import java.util.Random;
 
 public class RobotFactory implements GenericIFactory<String,Integer>{
-    private String[] stringRobot = new String[]{"Hello","Hi"};
-    private Integer[] integerRobot = new Integer[]{111,000};
+    private final String[] stringRobot = new String[]{"Hello","Hi"};
+    private final Integer[] integerRobot = new Integer[]{111,000};
     @Override
     public String nextObject() {
         Random random = new Random();

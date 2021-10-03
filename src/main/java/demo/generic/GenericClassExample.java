@@ -24,7 +24,7 @@ public class GenericClassExample<T> {
     public <A> void printList(A[] input){
         for (A element : input) {
             System.out.printf("%s",element);
-            System.out.printf(" ");
+            System.out.print(" ");
         }
         System.out.println();
     }

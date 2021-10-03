@@ -14,7 +14,7 @@ public class DependencyInjector {
     /*
     Bean 容器,这个是单例的
      */
-    private BeanContainer beanContainer;
+    private final BeanContainer beanContainer;
 
     public DependencyInjector() {
         beanContainer = BeanContainer.getInstance();

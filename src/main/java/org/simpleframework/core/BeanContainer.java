@@ -42,7 +42,7 @@ public class BeanContainer {
 
     private enum ContainerHolder {
         HOLDER;
-        private BeanContainer instance;
+        private final BeanContainer instance;
 
         ContainerHolder() {
             instance = new BeanContainer();
