@@ -71,7 +71,7 @@ public class AspectWeaver {
         if (ValidationUtil.isEmpty(classSet))return;
         //2.遍历代理类，为每个代理类生成动态代理实例
         for (Class<?> targetClass : classSet) {
-            //创建动态代理对象
+            //创建动态代理对象，这个AspectListExecutor就是MethodInterceptor的实例对象
             AspectListExecutor aspectListExecutor = new AspectListExecutor(targetClass,aspectInfos);
             Object proxyBean = ProxyCreator.createProxy(targetClass, aspectListExecutor);
             //3.把动态代理对象实例添加到容器里面去，取代之前的真实对象
