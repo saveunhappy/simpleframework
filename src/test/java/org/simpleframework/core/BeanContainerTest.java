@@ -7,6 +7,10 @@ import com.imooc.service.solo.impl.HeadLineServiceImpl;
 import org.junit.jupiter.api.*;
 import org.simpleframework.core.annotation.Controller;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BeanContainerTest {
     private static BeanContainer beanContainer;
@@ -48,6 +52,10 @@ public class BeanContainerTest {
     public void getClassesBySuperTest() throws Exception{
         Assertions.assertTrue(beanContainer.isLoaded());
         Assertions.assertTrue(beanContainer.getClassesBySuper(HeadLineService.class).contains(HeadLineServiceImpl.class));
+        Set<Object> set = new HashSet<>();
+        set.add("0");
+        System.out.println(set.stream().map(x -> x.toString()).collect(Collectors.joining(",")));
+
     }
 
 }

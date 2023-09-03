@@ -1,6 +1,6 @@
 package demo.reflect;
 
-public class ReflectTarget {
+public class ReflectTarget extends ReflectTargetOrigin{
 
     public String name;
     protected int index;
