@@ -13,7 +13,7 @@ public abstract class DefaultAspect {
 
     }
 
-    public void afterReturning(Class<?> targetClass, Method method,Object[] args,Throwable e) throws Throwable{
+    public void afterThrowing(Class<?> targetClass, Method method,Object[] args,Throwable e) throws Throwable{
 
     }
 }
