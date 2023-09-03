@@ -4,7 +4,6 @@ import demo.pattern.proxy.cglib.AlipayMethodInterceptor;
 import demo.pattern.proxy.cglib.CglibUtil;
 import demo.pattern.proxy.impl.CommonPayment;
 import demo.pattern.proxy.impl.ToCPaymentImpl;
-import demo.pattern.proxy.jdkproxy.AlipayInvocationHandler;
 import net.sf.cglib.proxy.MethodInterceptor;
 
 public class ProxyDemo {
@@ -22,7 +21,7 @@ public class ProxyDemo {
 //        ToBPayment toBProxy = JdkDynamicProxyUtil.newProxyInstance(toBPayment, handlerToB);
 //        toBProxy.pay();
         CommonPayment commonPayment = new CommonPayment();
-        AlipayInvocationHandler invocationHandler = new AlipayInvocationHandler(commonPayment);
+//        AlipayInvocationHandler invocationHandler = new AlipayInvocationHandler(commonPayment);
 //        CommonPayment commonPaymentProxy = JdkDynamicProxyUtil.newProxyInstance(commonPayment, invocationHandler);
         MethodInterceptor methodInterceptor = new AlipayMethodInterceptor();
         CommonPayment commonPaymentProxy = CglibUtil.createProxy(commonPayment, methodInterceptor);
