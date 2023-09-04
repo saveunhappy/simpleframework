@@ -9,8 +9,8 @@ import org.simpleframework.core.annotation.Controller;
 import java.lang.reflect.Method;
 
 @Slf4j
-@Aspect(value = Controller.class)
-@Order(0)
+@Aspect(pointcut = "execution(* com.imooc.controller.frontend..*.*(..))")
+@Order(10)
 public class ControllerTimeCalculatorAspect extends DefaultAspect {
     private long timestampCache;
 

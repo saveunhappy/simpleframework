@@ -49,6 +49,12 @@
             <artifactId>cglib</artifactId>
             <version>3.2.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.6</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>simpleframework</finalName>

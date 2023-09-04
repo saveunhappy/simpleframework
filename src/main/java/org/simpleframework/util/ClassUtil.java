@@ -131,7 +131,7 @@ public class ClassUtil {
                 //2.通过反射机制获取对应的Class对象并加入到classSet里,是通过Class.forName()
                 Class<?> targetClass = loadClass(className);
                 emptyClassSet.add(targetClass);
-                System.out.println(targetClass.toString());
+//                System.out.println(targetClass.toString());
 
             }
 
