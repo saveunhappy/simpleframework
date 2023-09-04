@@ -56,7 +56,15 @@ public class ClassUtil {
             //   D:\devCode\simpleframework\target\classes\com\imooc\entity
             //这个getPath获取的是绝对路径
 //            String path = url.getPath().substring(1).replaceAll("/", "\\\\");
-            String path = url.getPath().substring(1).replace("/", File.separator);
+            String os = System.getProperty("os.name");
+            String path = null;
+            if (!os.toLowerCase().startsWith("win")) {
+                path = url.getPath().replace("/", File.separator);
+            } else {
+                path = url.getPath().substring(1).replace("/", File.separator);
+
+            }
+//            String path = url.getPath().substring(1).replace("/", File.separator);
             //这里刚开始不能使用File.separator,是因为下面使用的是replaceAll，应该是用replace
             //String path1 = url.getPath().substring(1).replaceAll("/", File.separator);
             /*
