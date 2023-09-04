@@ -1,5 +1,7 @@
 package demo.reflect;
 
+import java.lang.reflect.Constructor;
+
 /*
  * 通过Class对象可以获取某个类中的：构造方法；
  *
@@ -21,19 +23,19 @@ public class ConstractorCollector {
         System.out.println("------------------获取所有的公有构造方法----------------");
 //        Constructor[] conArray = clazz.getConstructors();
         //val conArray = clazz.getConstructors();
-        var conArray = clazz.getConstructors();
-        for (var c : conArray) {
+        Constructor[] conArray = clazz.getConstructors();
+        for (Constructor c : conArray) {
             System.out.println(c);
         }
         //获取所有的构造方法
         System.out.println("------------------获取所有的构造方法----------------");
         conArray = clazz.getDeclaredConstructors();
-        for (var c : conArray) {
+        for (Constructor c : conArray) {
             System.out.println(c);
         }
         //获取单个带参数的公有方法
         System.out.println("-----------获取公有的，带有两个参数的构造方法");
-        var con = clazz.getConstructor(String.class, int.class);
+        Constructor<?> con = clazz.getConstructor(String.class, int.class);
         System.out.println("con = " + con);
         //获取单个私有的构造方法
         System.out.println("--------------------获取私有构造方法----------");
