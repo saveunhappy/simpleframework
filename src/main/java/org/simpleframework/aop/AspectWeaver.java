@@ -24,7 +24,8 @@ public class AspectWeaver {
         if (ValidationUtil.isEmpty(aspectSet)) {
             return;
         }
-        //2、拼接AspectInfoList，这个里面是所有的切面类，里面有order,before,after,还有表达式
+        //2、拼接AspectInfoList，这个里面是所有的切面类，里面有order,before,after,
+        //还有表达式，就是把aspect类的内容提取出来弄一个新的对象，可以称之为转换
         List<AspectInfo> aspectInfoList = packAspectInfoList(aspectSet);
         //3、遍历容器中的类
         Set<Class<?>> classSet = beanContainer.getClasses();
@@ -33,7 +34,7 @@ public class AspectWeaver {
             if (targetClass.isAnnotationPresent(Aspect.class)) {
                 continue;
             }
-            //4、粗筛符合条件的Aspect
+            //4、粗筛符合条件的Aspect，每次循环去把所有的aspect去切那一个类，
             List<AspectInfo> roughMatchedAspectList = collectRoughMatchedAspectListForSpecificClass(aspectInfoList, targetClass);
             //5、尝试进行Aspect的织入
             wrapIfNecessary(roughMatchedAspectList, targetClass);
@@ -55,7 +56,8 @@ public class AspectWeaver {
     private List<AspectInfo> collectRoughMatchedAspectListForSpecificClass(List<AspectInfo> aspectInfoList, Class<?> targetClass) {
         List<AspectInfo> roughMatchedAspectList = new ArrayList<>();
         for (AspectInfo aspectInfo : aspectInfoList) {
-            //粗筛,这个是筛选的是切面类，不是要进行增强的类
+            //粗筛,让所有的Aspect去看能不能切到对应的类，这个主要是within，
+            // 因为execution他解析不了，直接就返回true了
             if (aspectInfo.getPointcutLocator().roughMatches(targetClass)) {
                 roughMatchedAspectList.add(aspectInfo);
             }
@@ -70,7 +72,7 @@ public class AspectWeaver {
                 Aspect aspectTag = aspectClass.getAnnotation(Aspect.class);
                 Order orderTag = aspectClass.getAnnotation(Order.class);
                 DefaultAspect defaultAspect = (DefaultAspect) beanContainer.getBean(aspectClass);
-                //初始化表达式定位器，现在传的就是表达式的字符串数组类
+                //初始化表达式定位器，现在传的就是表达式的字符串
                 PointcutLocator pointcutLocator = new PointcutLocator(aspectTag.pointcut());
                 AspectInfo aspectInfo = new AspectInfo(orderTag.value(), defaultAspect, pointcutLocator);
                 aspectInfoList.add(aspectInfo);
