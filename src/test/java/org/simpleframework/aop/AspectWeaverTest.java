@@ -23,5 +23,6 @@ public class AspectWeaverTest {
 
         HelloController helloController = (HelloController) beanContainer.getBean(HelloController.class);
         helloController.hello();
+
     }
 }

@@ -18,7 +18,6 @@ public class ControllerTimeCalculatorAspect extends DefaultAspect {
     public void before(Class<?> targetClass, Method method, Object[] args) throws Throwable {
         log.info("开始计时，执行的类是:[{}],执行的方法是[{}],参数是[{}]", targetClass.getName(), method.getName(), args);
         timestampCache = System.currentTimeMillis();
-
     }
 
     @Override
@@ -28,6 +27,4 @@ public class ControllerTimeCalculatorAspect extends DefaultAspect {
         log.info("开始计时，执行的类是:[{}],执行的方法是[{}],参数是[{}],时间是[{}]ms", targetClass.getName(), method.getName(), args, costTime);
         return returnValue;
     }
-
-
 }

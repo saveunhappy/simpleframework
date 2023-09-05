@@ -66,13 +66,7 @@ public class AspectListExecutor implements MethodInterceptor {
     private void collectAccurateMatchedAspectList(Method method) {
         if (ValidationUtil.isEmpty(aspectInfoList)) return;
         //foreach不支持动态移除元素，改用迭代器
-        Iterator<AspectInfo> it = aspectInfoList.iterator();
-        while (it.hasNext()) {
-            AspectInfo aspectInfo = it.next();
-            if (!aspectInfo.getPointcutLocator().accurateMatches(method)) {
-                it.remove();
-            }
-        }
+        aspectInfoList.removeIf(aspectInfo -> !aspectInfo.getPointcutLocator().accurateMatches(method));
     }
     //4.如果被代理方法抛出异常，则按照order的顺序降序执行完所有Aspect的afterThrowing方法
 

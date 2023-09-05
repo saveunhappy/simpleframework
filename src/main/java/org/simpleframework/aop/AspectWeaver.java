@@ -47,7 +47,9 @@ public class AspectWeaver {
         if (ValidationUtil.isEmpty(roughMatchedAspectList)) {
             return;
         }
-        //创建动态代理对象
+        // 创建动态代理对象，这里是把粗筛列表给传到这个对象里面去了，在执行的时候会调用invoke方法，
+        // invoke之前会有一次精细的筛选，就是去解析execution，之前是解析的within，然后过滤
+        // 下来的execution执行before,after,之类的
         AspectListExecutor aspectListExecutor = new AspectListExecutor(targetClass, roughMatchedAspectList);
         Object proxy = ProxyCreator.createProxy(targetClass, aspectListExecutor);
         beanContainer.addBean(targetClass, proxy);
