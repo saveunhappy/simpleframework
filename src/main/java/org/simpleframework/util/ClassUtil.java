@@ -71,8 +71,9 @@ public class ClassUtil {
             去掉协议，默认是/，就是linux下的根路径，先用substring截取，从1开始，第一个不要了，
             然后,windows是反斜线，全部给替换掉，
              */
-            File packageDirectory = new File(path);
+
             //packageDirectory是包名的真实路径，也是一个文件，packageName是包名。
+            File packageDirectory = new File(path);
             extractClassFile(classSet, packageDirectory, packageName);
         }
         return classSet;
