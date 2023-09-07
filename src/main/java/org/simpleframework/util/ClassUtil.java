@@ -72,14 +72,7 @@ public class ClassUtil {
             然后,windows是反斜线，全部给替换掉，
              */
             File packageDirectory = new File(path);
-            //这里为什么还要传packageName进去？首先，这里先把包名给传过去，然后获取绝对路径，
-            //因为操作系统不一样，得用ClassLoader,然后把绝对路径传过去之后，再恢复成包名，就可以屏蔽
-            // 操作系统的不一样了，而且，这里的包名
-            //有两个作用，第一，定义你要找的包里面的哪个类，第二，字符串截取，你要从target目录中的class文件
-            //中获取到那么长，前面的都不需要啊，
-            //D:.devCode.simpleframework.target.classes.com.imooc.entity.bo.HeadLine.class，
-            //以包名indexof,然后截取到.class，lastIndexOf(".")就可以截取class文件之前的了。
-            //com.imooc.entity.bo.HeadLine
+            //packageDirectory是包名的真实路径，也是一个文件，packageName是包名。
             extractClassFile(classSet, packageDirectory, packageName);
         }
         return classSet;
