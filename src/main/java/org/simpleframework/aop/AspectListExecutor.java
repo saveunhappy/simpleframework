@@ -8,7 +8,6 @@ import org.simpleframework.util.ValidationUtil;
 
 import java.lang.reflect.Method;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 public class AspectListExecutor implements MethodInterceptor {
@@ -65,7 +64,7 @@ public class AspectListExecutor implements MethodInterceptor {
 
     private void collectAccurateMatchedAspectList(Method method) {
         if (ValidationUtil.isEmpty(aspectInfoList)) return;
-        //foreach不支持动态移除元素，改用迭代器
+        //foreach不支持动态移除元素，改用迭代器，rough先去筛选类，这里去筛选类的具体方法
         aspectInfoList.removeIf(aspectInfo -> !aspectInfo.getPointcutLocator().accurateMatches(method));
     }
     //4.如果被代理方法抛出异常，则按照order的顺序降序执行完所有Aspect的afterThrowing方法
