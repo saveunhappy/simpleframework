@@ -73,6 +73,8 @@ public class ClassUtil {
              */
 
             //packageDirectory是包名的真实路径，也是一个文件，packageName是包名。
+            //在下面的调用中是要递归的去找的，所以packageDirectory会在递归中一直变
+            //是一个文件，对象，所以是要传的
             File packageDirectory = new File(path);
             extractClassFile(classSet, packageDirectory, packageName);
         }
