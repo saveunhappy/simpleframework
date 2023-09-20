@@ -69,6 +69,7 @@ public class DependencyInjector {
         Object fieldValue = beanContainer.getBean(fieldClass);
         if (fieldValue != null) {
             return fieldValue;
+
         } else {
             //这就是接口了，获取实现类
             Class<?> implementedClass = getImplementClass(fieldClass,autowiredValue);
